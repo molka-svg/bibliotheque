@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Bibliothèque</h1>
+</div>
+<div>
+    <button (click)="isformVisible=true" class="btn btn-info">Ajouter un livre</button>
+    <button (click)="afficherr=true" class="btn btn-info">Afficher la liste</button>
+</div>
+<div class="input-group input-group-sm mb-3" *ngIf="isformVisible">
+    <div class="input-group mb-3">
+        Titre: <input type="text" class="form-control" [(ngModel)]="title">
+    </div>
+    <div class="input-group mb-3">
+        Prix: <input type="number" class="form-control" [(ngModel)]="prix"> DT
+    </div>
+    <div class="input-group mb-3">
+        Auteur: <input type="text" class="form-control" [(ngModel)]="auteur">
+    </div>
+    <div class="input-group mb-3">
+        Date: <input type="date" class="form-control" [(ngModel)]="date">
+    </div>
+    <button (click)="confirmer()" class="btn btn-info">Confirmer</button>
+</div>
+<div *ngIf="afficherr">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Prix</th>
+                <th>Date</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
+ 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let livre of tab; let index = index">
+                <td>{{livre.title}}</td>
+                <td>{{livre.auteur}}</td>
+                <td>{{livre.prix}}</td>
+                <td>{{livre.date}}</td>
+                <td><button (click)="editer(index)">Editer</button></td>
+                <td><button (click)="supprimer(index)">Supprimer</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
